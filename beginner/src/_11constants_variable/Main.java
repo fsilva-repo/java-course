@@ -15,6 +15,7 @@ public class Main {
     /*
      * declaracao de uma constante
      * segundo a convensão no java, as constants devem ser definidas em caixa alta
+     * antecedida pela keyword final
      */
     final String GREETING = "Hello, World!";
 

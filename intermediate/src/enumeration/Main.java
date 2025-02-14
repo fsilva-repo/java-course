@@ -6,9 +6,12 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		System.out.println("");
+		int i = 1;
 		for (MonthsOfTheYear s : MonthsOfTheYear.values()) {
 
-			System.out.println(s.infoMounth());
+			System.out.println(i + " - " + s.infoMounth());
+			i++;
 		}
 
 		System.out.println("");

@@ -1,6 +1,6 @@
 package enumeration;
 
-public enum MonthOfTheYear {
+public enum MonthsOfTheYear {
 	JANUARY {
 		@Override
 		public String infoMounth() {

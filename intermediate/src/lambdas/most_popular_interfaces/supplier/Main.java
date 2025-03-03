@@ -1,6 +1,8 @@
 package lambdas.most_popular_interfaces.supplier;
 
 import java.util.function.Supplier;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -23,11 +25,23 @@ public class Main {
 		 * @FunctionalInterface public interface Supplier<T> { T get(); }
 		 */
 		
-		// ex: 1
-		Supplier<Double> supplierRandom = () -> (Math.random() * 30);
-		String formated = String.format("%.0f", supplierRandom.get());
-		System.out.println(formated);
+		/*
+		 * aqui a interface Supplier fornecera um numero aleatorio de 0 a 100,
+		 * com isso chamaremos a interface para gerar 30 numeros e 
+		 * preencher uma lista de numeros
+		 */
+		Supplier<Double> supplierRandom = () -> (Math.random() * 100);
+		
+
+		List<Integer> numberList = new ArrayList<>();
+		int i = 0;
+		while(i < 30) {
+			int randNumber = supplierRandom.get().intValue();
+			numberList.add(randNumber);
+			i++;
+		}
 	
+		numberList.forEach(System.out::println);
 	}
 
 }

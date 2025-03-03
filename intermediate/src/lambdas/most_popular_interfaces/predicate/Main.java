@@ -11,9 +11,8 @@ public class Main {
 
 		/*
 		 * A interface Predicate é usada para representar uma função que recebe um
-		 * argumento e retorna um valor booleano É Ela é frequentemente usada para É
-		 * comumente usada para filtrar ou testar elementos em coleções, como listas, ou
-		 * em operações de stream
+		 * argumento e retorna um valor booleano, Ela é comumente usada para filtrar ou testar 
+		 * elementos em coleções, como listas, ou em operações de stream
 		 */
 
 		/*
@@ -45,6 +44,24 @@ public class Main {
 				- (stractorPrice.applyAsDouble(console) * 15) / 100;
 		System.out.println(priceWithDiscount);
 
+
+		/* usaremos nossa implementacao da interface Predicate a (IsDiscount),
+		 * para testar quais produtos tem o preco maior que 1500 reais,
+		 * em seguida a implementacao da interface ToDoubleFunction a (stractorPrice)
+		 * ira extrair os precos desses produtos
+		 * ja aplicando o desconto de 15% de desconto em cada valor
+		 *  */
+		for(int i = 0; i < list.size(); i++) {
+			if(IsDiscount.test(list.get(i))) {
+				double originalPrice = list.get(i).getPrice();
+				double priceDiscount = stractorPrice.applyAsDouble(list.get(i))
+				- (stractorPrice.applyAsDouble(list.get(i)) * 15) / 100;
+
+				String formatMsg = String.format("Preco: %.2f desconto 15 porcento total: %.2f",
+					originalPrice, priceDiscount);
+				System.out.println(formatMsg);
+			}
+		}
 	}
 
 }

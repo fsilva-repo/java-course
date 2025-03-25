@@ -16,17 +16,19 @@ public class Main {
 		Function<Product, Double> productPrice = arg -> arg.getPrice();
 
 		BiFunction<String, Double, String> concatTo =
-									(s, i) -> "Name: " + s + ", Price: " + i; 
+									(s, d) -> "Name: " + s + ", Price: " + d;
 
 
-		list.forEach(p -> System.out.println(concatTo.apply(productName.apply(p), productPrice.apply(p))));
+	list.forEach(p -> System.out.println(
+		concatTo.apply(productName.apply(p), productPrice.apply(p))));
 
-	Function<Double, Double> sumPrice = p -> {
-		double acc = 0;
-		acc += p;
-		return acc;
-	};
+	// Function<Product, Double> sumPrice = p -> {
+	// 	double acc = 0;
+	// 	acc += productPrice.apply(p);
+	// 	return acc;
+	// };
 
-	list.forEach(p -> System.out.print(sumPrice.andThen(productPrice.apply(p))));
+	//System.out.println(sumPrice.apply(productPrice.apply(p2)));
+	//list.forEach(p -> System.out.println(sumPrice.apply(productPrice.apply(p))));
 	}
 }

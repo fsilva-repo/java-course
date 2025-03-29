@@ -22,13 +22,18 @@ public class Main {
 	list.forEach(p -> System.out.println(
 		concatTo.apply(productName.apply(p), productPrice.apply(p))));
 
-	// Function<Product, Double> sumPrice = p -> {
-	// 	double acc = 0;
-	// 	acc += productPrice.apply(p);
-	// 	return acc;
-	// };
+	System.out.println("\n");
 
-	//System.out.println(sumPrice.apply(productPrice.apply(p2)));
-	//list.forEach(p -> System.out.println(sumPrice.apply(productPrice.apply(p))));
+	List<Double> priceLists = new ArrayList<>();
+
+	for(Product p : list) {
+		priceLists.add(productPrice.apply(p));
+	}
+
+	double total = priceLists.stream().reduce(0.0, (e1, e2) -> e1 + e2);
+	priceLists.forEach(p -> System.out.println(p));
+	
+	System.out.println("---------\n" + "total: " + total);
+
 	}
 }

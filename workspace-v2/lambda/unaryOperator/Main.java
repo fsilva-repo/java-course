@@ -2,6 +2,7 @@ import java.util.function.Supplier;
 import java.util.function.Predicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.*;
 public class Main {
 	public static void main(String[] args) {
@@ -14,39 +15,30 @@ public class Main {
 		Product p5 = new Product("Escova de Cabelos", 7.80);
 		Product p6 = new Product("Secador de cabelos", 89.90);
 
-		List<Product> list = Arrays.asList();
-		List<Product> list2 = Arrays.asList(p1, p2, p3, p4, p5, p6);
+		List<Product> list = Arrays.asList(p1, p2, p3, p4, p5, p6);
 
-		Predicate<Product> highestPrice = p -> p.getPrice() >= 70.0;
+		UnaryOperator<Double> discount = n -> n = n - (n * 15) / 100;
+		Predicate<Product> priceGreaterThan = p -> p.getPrice() >= 50.0;
 		Consumer<Product> productName = p -> System.out.println(p.getName());
 		Supplier<String> supplier = () -> "Esta lista esta vazia!";
 		Function<List<Product>, List<String>> newList = l -> l.stream()
-																	.map(p -> p.getName())
-																	.toList();
+																										.map(p -> p.getName())
+																										.toList();
 
-		// mostra erro pois a lista esta vazia.
 		try {
 
-			if (!list.isEmpty()) {
-				System.out.println(newList.apply(list));
-			} else {
-				throw new IllegalArgumentException(supplier.get());
-			}
-
-		} catch (IllegalArgumentException e) {
-			System.err.println("Erro: " + e.getMessage());
-		}
-
-	
-		System.out.println("\t-----:-----");
-
-		// mostra o conteudo da lista.
-		try {
-
-			if (list2.isEmpty()) {
+			if (list.isEmpty()) {
         throw new IllegalArgumentException(supplier.get());
     	}
-    	System.out.println(newList.apply(list2));
+
+    	list.stream()
+    			.filter(p -> priceGreaterThan.test(p))
+    			.map(p -> discount.apply(p.getPrice()))
+    			.toList()
+    			.forEach(System.out::println);
+
+
+
 
 		} catch (IllegalArgumentException e) {
 			System.err.println("Erro: " + e.getMessage());

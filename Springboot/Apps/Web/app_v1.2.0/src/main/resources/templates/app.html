@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+    </script>
+  <!--<link rel="stylesheet" href="/css/style.css">-->
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+  <div class="main">
+    <h1 id="title" th:text="${title}">title</h1>
+    <p id="subtitle" th:text="${subtitle}">subtitle</p>
+    <div class="container" th:text="${loremIpsum}">text</div>
+  </div>
+
+  <!--<script th:src="@{/script/app.js}"></script>-->
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #d7d6da;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  overflow: hidden;
+}
+.title {
+  text-align: center;
+  padding: 20px;
+}
+.subtitle {
+  text-align: center;
+  color: #666;
+}
+.container {
+  width: 40vw;
+  height: 40vh;
+  padding: 20px;
+  text-align: justify;
+  font-size: 1rem;
+  color: rgb(17, 17, 17);
+  font-family: fantasy, cursive, sans-serif, monospace;
+  background-color: bisque;
+}
